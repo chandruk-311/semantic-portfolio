@@ -1,20 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Weather Dashboard</title>
+
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<div class="container">
-  <h1>Weather Dashboard</h1>
+  <nav>
 
-  <input type="text" id="city" placeholder="Enter city name">
-  <button onclick="getWeather()">Search</button>
+    <h2>🌦 Weather App</h2>
 
-  <div id="weather"></div>
-</div>
+    <div class="links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
 
-<script src="script.js"></script>
+  </nav>
+
+  <div class="container">
+
+    <h1>Live Weather Dashboard</h1>
+
+    <input
+      type="text"
+      id="city"
+      placeholder="Enter city name">
+
+    <button onclick="getWeather()">
+      Search
+    </button>
+
+    <div id="weather"></div>
+
+  </div>
+
+  <script src="script.js"></script>
+
 </body>
 </html>
