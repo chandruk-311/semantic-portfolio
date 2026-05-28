@@ -1,48 +1,70 @@
 async function getWeather() {
 
-  const city = document.getElementById("city").value.trim();
+  const city =
+  document.getElementById("city").value.trim();
 
-  const apiKey = "26c46440d15d43ae8fe144917262805";
+  const apiKey =
+  "YOUR_API_KEY";
 
   const url =
   `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`;
 
+  const weatherDiv =
+  document.getElementById("weather");
+
+  weatherDiv.innerHTML =
+  "Loading...";
+
   try {
 
-    const response = await fetch(url);
+    const response =
+    await fetch(url);
 
-    const data = await response.json();
+    const data =
+    await response.json();
 
-    // Error handling
-    if (data.error) {
+    if(data.error){
 
-      document.getElementById("weather").innerHTML =
-      `<p>City not found</p>`;
+      weatherDiv.innerHTML =
+      "City not found";
 
       return;
     }
 
-    // Display weather data
-    document.getElementById("weather").innerHTML = `
-      <h2>${data.location.name}, ${data.location.country}</h2>
+    weatherDiv.innerHTML = `
 
-      <img src="https:${data.current.condition.icon}" alt="weather icon">
+      <h2>
+      ${data.location.name},
+      ${data.location.country}
+      </h2>
 
-      <p><strong>Condition:</strong> ${data.current.condition.text}</p>
+      <img
+      src="https:${data.current.condition.icon}">
 
-      <p><strong>Temperature:</strong> ${data.current.temp_c} °C</p>
+      <p>
+      Condition:
+      ${data.current.condition.text}
+      </p>
 
-      <p><strong>Humidity:</strong> ${data.current.humidity}%</p>
+      <p>
+      Temperature:
+      ${data.current.temp_c} °C
+      </p>
 
-      <p><strong>Wind Speed:</strong> ${data.current.wind_kph} km/h</p>
+      <p>
+      Humidity:
+      ${data.current.humidity}%
+      </p>
+
+      <p>
+      Wind Speed:
+      ${data.current.wind_kph} km/h
+      </p>
     `;
 
-  } catch(error) {
+  } catch(error){
 
-    document.getElementById("weather").innerHTML =
-    `<p>Something went wrong</p>`;
-
-    console.log(error);
-
+    weatherDiv.innerHTML =
+    "Something went wrong";
   }
 }
